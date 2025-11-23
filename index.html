@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Prompt Builder</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ8Z3WKC3K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HQ8Z3WKC3K');
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <header>
+        <div class="container">
+            <h1><span class="neon-text">AI</span> Prompt Builder</h1>
+            <p class="subtitle" data-i18n="subtitle">Create professional Midjourney prompts in seconds.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="builder-section glass-panel">
+            <h2 data-i18n="builderTitle">Builder</h2>
+
+            <div class="form-group">
+                <label for="subject" data-i18n="labelSubject">Subject</label>
+                <input type="text" id="subject" placeholder="e.g. A futuristic city, A cat wizard"
+                    data-i18n-placeholder="placeholderSubject">
+                <div class="tags" id="subject-tags">
+                    <!-- Tags injected by JS -->
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="style" data-i18n="labelStyle">Style / Medium</label>
+                    <select id="style">
+                        <option value="" data-i18n="optionNone">None</option>
+                        <!-- Options injected by JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="lighting" data-i18n="labelLighting">Lighting</label>
+                    <select id="lighting">
+                        <option value="" data-i18n="optionNone">None</option>
+                        <!-- Options injected by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="camera" data-i18n="labelCamera">Camera / View</label>
+                    <select id="camera">
+                        <option value="" data-i18n="optionNone">None</option>
+                        <!-- Options injected by JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="color" data-i18n="labelColor">Colors</label>
+                    <select id="color">
+                        <option value="" data-i18n="optionNone">None</option>
+                        <!-- Options injected by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="mood" data-i18n="labelMood">Mood</label>
+                    <select id="mood">
+                        <option value="" data-i18n="optionNone">None</option>
+                        <!-- Options injected by JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="environment" data-i18n="labelEnvironment">Environment</label>
+                    <select id="environment">
+                        <option value="" data-i18n="optionNone">None</option>
+                        <!-- Options injected by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="params-section">
+                <h3 data-i18n="paramsTitle">Parameters</h3>
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label for="ar">Aspect Ratio (--ar)</label>
+                        <select id="ar">
+                            <option value="">Default</option>
+                            <option value="--ar 16:9">16:9</option>
+                            <option value="--ar 9:16">9:16</option>
+                            <option value="--ar 1:1">1:1</option>
+                            <option value="--ar 4:3">4:3</option>
+                            <option value="--ar 3:4">3:4</option>
+                            <option value="--ar 21:9">21:9</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="version">Version (--v)</label>
+                        <select id="version">
+                            <option value="">Default</option>
+                            <option value="--v 6.0">v 6.0</option>
+                            <option value="--v 5.2">v 5.2</option>
+                            <option value="--niji 6">Niji 6</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="stylize">Stylize (--s) <span id="stylize-val">0</span></label>
+                        <input type="range" id="stylize" min="0" max="1000" value="0">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section glass-panel sticky">
+            <h2 data-i18n="previewTitle">Prompt Preview</h2>
+            <div class="prompt-box">
+                <textarea id="final-prompt" readonly></textarea>
+                <button id="copy-btn" class="btn-primary">
+                    <span class="icon">📋</span> <span data-i18n="btnCopy">Copy to Clipboard</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="recipes-section glass-panel">
+            <h2 data-i18n="recipesTitle">Recipe Book</h2>
+            <div class="recipe-grid" id="recipe-grid">
+                <!-- Recipes injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2025 AI Prompt Builder. <span data-i18n="footerText">Designed for Creators.</span> |
+            <a href="terms.html" class="footer-link" data-i18n="termsLink">Terms of Service</a>
+        </p>
+    </footer>
+
+    <script src="recipes.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
